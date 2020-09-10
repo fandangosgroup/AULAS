@@ -1,7 +1,9 @@
 package com.github.fabegalo.programa;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.github.fabegalo.classes.Tarefas;
 import com.github.fabegalo.classes.Usuario;
 
 public class main {
@@ -10,12 +12,14 @@ public class main {
 		
 		Boolean exit = false;
 		UsuarioRepositorio users = new UsuarioRepositorio();
+		TarefasRepositorio tarefas = new TarefasRepositorio();
 		Usuario user = null;
+		ArrayList<Tarefas> tarefa = new ArrayList<Tarefas>();
 		
 		try (Scanner scan = new Scanner(System.in)){
 			while(!exit) {
 				
-				if(user.getNome().isEmpty()) {
+				if(user == null) {
 					System.out.println("-----Bem vindo ao controle de tarefas---- --");
 					System.out.println("-                                          -");
 					System.out.println("-                [1]Logar                  -");
@@ -65,32 +69,70 @@ public class main {
 							exit = true;
 					}
 				}else {
-					System.out.println("-----Bem vindo "+user.getNome()+"-----------");
-					System.out.println("-                                          -");
-					System.out.println("-                [1]Gerenciar Tarefas      -");
-					System.out.println("-                [2]Deslogar               -");
-					System.out.println("-                [3]Encerrar               -");
-					System.out.println("-                                          -");
-					System.out.println("--------------------------------------------");
+					Boolean taskControl = false;
+					RenderListTarefas tasks = null;
 					
-					String input = scan.nextLine();
-					
-					
-					switch(input) {
-						case "1":
-							
-							break;
-						case "2":
-							user = null;
-							break;
-							
-						case "3":
-							exit = true;
-							break;
+					if(taskControl) {
+						System.out.println("-----Bem vindo "+user.getNome()+"-----------");
+						System.out.println("-                                          -");
+						System.out.println("-                [1]Gerenciar Tarefas      -");
+						System.out.println("-                [2]Deslogar               -");
+						System.out.println("-                [3]Encerrar               -");
+						System.out.println("-                                          -");
+						System.out.println("--------------------------------------------");
 						
-						default:
-							exit = true;
+						
+						String input = scan.nextLine();
+						
+						
+						switch(input) {
+							case "1":
+								taskControl = true;
+								tasks = new RenderListTarefas(user, tarefa);
+								break;
+							case "2":
+								user = null;
+								break;
+								
+							case "3":
+								exit = true;
+								break;
+							
+							default:
+								exit = true;
+						}
+					}else {
+						System.out.println("-----Bem vindo "+user.getNome()+"-----------");
+						System.out.println("-                                          -");
+						System.out.println("-                [1]Adicionar Tarefa       -");
+						System.out.println("-                [2]Remover Tarefa         -");
+						System.out.println("-                [3]Concluir Tarefa        -");
+						System.out.println("-                                          -");
+						System.out.println("--------------------------------------------");
+						
+						
+						String input = scan.nextLine();
+						
+						
+						switch(input) {
+							case "1":
+								tasks.addTask(new Tarefas(0, input, user, input, input));
+								break;
+							case "2":
+								tasks.removeTask();
+								break;
+								
+							case "3":
+								tasks.endTask();
+								break;
+							
+							default:
+								exit = true;
+						}
 					}
+					
+					
+					
 				}
 				
 				

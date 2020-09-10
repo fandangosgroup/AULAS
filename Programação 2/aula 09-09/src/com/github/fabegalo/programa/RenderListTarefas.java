@@ -21,6 +21,18 @@ public class RenderListTarefas {
 	public Usuario getUser() {
 		return user;
 	}
+	
+	public void removeTask() {
+		
+	}
+	
+	public void addTask() {
+		
+	}
+	
+	public void endTask() {
+		
+	}
 
 	public ArrayList<Tarefas> getTarefas() {
 		return tarefas;
