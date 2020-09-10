@@ -3,7 +3,7 @@ package com.github.fabegalo.programa;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.github.fabegalo.classes.Tarefas;
+import com.github.fabegalo.classes.Tarefa;
 import com.github.fabegalo.classes.Usuario;
 
 public class main {
@@ -14,7 +14,7 @@ public class main {
 		UsuarioRepositorio users = new UsuarioRepositorio();
 		TarefasRepositorio tarefas = new TarefasRepositorio();
 		Usuario user = null;
-		ArrayList<Tarefas> tarefa = new ArrayList<Tarefas>();
+		ArrayList<Tarefa> tarefa = new ArrayList<Tarefa>();
 		
 		try (Scanner scan = new Scanner(System.in)){
 			while(!exit) {
@@ -107,6 +107,7 @@ public class main {
 						System.out.println("-                [1]Adicionar Tarefa       -");
 						System.out.println("-                [2]Remover Tarefa         -");
 						System.out.println("-                [3]Concluir Tarefa        -");
+						System.out.println("-                [4]Sair                   -");
 						System.out.println("-                                          -");
 						System.out.println("--------------------------------------------");
 						
@@ -116,7 +117,7 @@ public class main {
 						
 						switch(input) {
 							case "1":
-								tasks.addTask(new Tarefas(0, input, user, input, input));
+								tasks.addTask(new Tarefa(0, input, user, input, input));
 								break;
 							case "2":
 								tasks.removeTask();
@@ -124,6 +125,11 @@ public class main {
 								
 							case "3":
 								tasks.endTask();
+								break;
+								
+							case "4":
+								tarefas.updateTaskListUser(tasks.getTarefas());
+								taskControl = false;
 								break;
 							
 							default:

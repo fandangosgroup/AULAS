@@ -2,24 +2,28 @@ package com.github.fabegalo.programa;
 
 import java.util.ArrayList;
 
-import com.github.fabegalo.classes.Tarefas;
+import com.github.fabegalo.classes.Tarefa;
 import com.github.fabegalo.classes.Usuario;
 
 public class TarefasRepositorio {
-	ArrayList<Tarefas> repositorioTarefa = new ArrayList<Tarefas>();
+	ArrayList<Tarefa> repositorioTarefa = new ArrayList<Tarefa>();
 	
 	
-	public ArrayList<Tarefas> getTarefasInUser(Usuario user){
+	public ArrayList<Tarefa> getTarefasInUser(Usuario user){
 		
-		ArrayList<Tarefas> aux = new ArrayList<Tarefas>();
+		ArrayList<Tarefa> aux = new ArrayList<Tarefa>();
 		
-		for(Tarefas task : repositorioTarefa) {
+		for(Tarefa task : repositorioTarefa) {
 			if(user == task.getUsuario()) {
 				aux.add(task);
 			}
 		}
 		
 		return aux;
+		
+	}
+	
+	public void updateTaskListUser(ArrayList<Tarefa> tasks) {
 		
 	}
 

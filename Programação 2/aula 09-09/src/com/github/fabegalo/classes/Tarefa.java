@@ -1,6 +1,6 @@
 package com.github.fabegalo.classes;
 
-public class Tarefas {
+public class Tarefa {
 	
 	private int id;
 	private String status;
@@ -8,7 +8,7 @@ public class Tarefas {
 	private String titulo;
 	private String descricao;
 	
-	public Tarefas(int id, String status, Usuario usuario, String titulo, String descricao) {
+	public Tarefa(int id, String status, Usuario usuario, String titulo, String descricao) {
 		this.id = id;
 		this.status = status;
 		this.usuario = usuario;
